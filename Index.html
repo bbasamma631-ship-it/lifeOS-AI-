@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSprint AI - Next-Gen AI Career Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deep: '#0f172a',
+                            dark: '#1e1b4b',
+                            purple: '#6366f1',
+                            blue: '#3b82f6',
+                            teal: '#14b8a6'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #14b8a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+        }
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="dark bg-brand-deep text-slate-100 min-h-screen font-sans overflow-x-hidden custom-scrollbar">
+
+    <!-- Ambient Background Blobs -->
+    <div class="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none z-0 animate-pulse-slow"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none z-0 animate-pulse-slow"></div>
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('landing')">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fas fa-bolt text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-800 dark:text-white">SkillSprint<span class="gradient-text">AI</span></span>
+            </div>
+
+            <!-- Desktop Nav Items -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition nav-link">Features</a>
+                <a href="#" onclick="showPage('dashboard')" class="text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition nav-link">Dashboard</a>
+                <a href="#" onclick="showPage('advisor')" class="text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition nav-link">AI Advisor</a>
+                <a href="#" onclick="showPage('contact')" class="text-slate-600 dark:text-slate-300 hover:text-indigo-500 transition nav-link">Contact</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition">
+                    <i id="theme-icon" class="fas fa-sun text-lg"></i>
+                </button>
+                <div id="nav-auth-btns" class="flex items-center gap-3">
+                    <button onclick="showPage('auth')" class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-500 transition">Sign In</button>
+                    <button onclick="showPage('auth')" class="gradient-bg px-5 py-2.5 rounded-xl text-sm font-medium text-white shadow-md shadow-indigo-500/20 hover:opacity-9s0 transition">Get Started</button>
+                </div>
+                <div id="nav-user-profile" class="hidden flex items-center gap-3 cursor-pointer" onclick="showPage('profile')">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Profile" class="w-10 h-10 rounded-xl object-cover border border-indigo-500">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Containers -->
+    <main class="relative z-10 pt-24 min-h-screen">
+
+        <!-- 1. LANDING PAGE -->
+        <section id="page-landing" class="page-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center max-w-3xl mx-auto mt-8">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 mb-6 border border-indigo-500/20">
+                    <i class="fas fa-sparkles"></i> Revolutionizing Student Careers with Next-Gen AI
+                </span>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-6">
+                    Sprint Past Your Limits. <br><span class="gradient-text">Own Your Future.</span>
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                    SkillSprint AI maps your career ecosystem instantly. Build personalized learning roadmaps, optimize resumes with dynamic neural analysis, and ace hyper-realistic mock interviews.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="showPage('auth')" class="w-full sm:w-auto gradient-bg px-8 py-4 rounded-xl font-medium text-white shadow-lg shadow-indigo-500/30 hover:scale-[1.02] transition duration-200 flex items-center justify-center gap-2">
+                        Start Sprinting Free <i class="fas fa-arrow-right text-sm"></i>
+                    </button>
+                    <a href="#features" class="w-full sm:w-auto glass text-slate-800 dark:text-slate-200 px-8 py-4 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-800/50 transition flex items-center justify-center gap-2">
+                        Explore Ecosystem
+                    </a>
+                </div>
+            </div>
+
+            <!-- Feature Ecosystem Grid -->
+            <div id="features" class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
+                <div class="glass p-8 rounded-2xl border hover:border-indigo-500/40 transition group cursor-pointer" onclick="showPage('advisor')">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 dark:text-white">AI Career Advisor</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Real-time dynamic pathing, industry cross-referencing, and continuous mentorship tailored to your aspirations.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl border hover:border-blue-500/40 transition group cursor-pointer" onclick="showPage('resume')">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-file-invoice text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 dark:text-white">Neural Resume Analyzer</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Instantly optimize for ATS trackers and industry standards with algorithmic keyword and structure parsing.</p>
+                </div>
+                <div class="glass p-8 rounded-2xl border hover:border-teal-500/40 transition group cursor-pointer" onclick="showPage('interview')">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-video text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 dark:text-white">Generative Mock Interviews</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Face realistic adaptive question sets mimicking top tech and corporate giants with structural sentiment reviews.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AUTHENTICATION (LOGIN/SIGNUP) -->
+        <section id="page-auth" class="page-section hidden max-w-md mx-auto px-4 py-12">
+            <div class="glass p-8 rounded-3xl shadow-xl border text-center">
+                <h2 id="auth-title" class="text-3xl font-extrabold mb-2 text-slate-800 dark:text-white">Welcome Back</h2>
+                <p id="auth-subtitle" class="text-slate-500 text-sm mb-8">Access your personalized elite workspace</p>
+                
+                <form onsubmit="handleAuth(event)" class="space-y-5 text-left">
+                    <div id="auth-name-container" class="hidden">
+                        <label class="block text-xs font-semibold tracking-wide uppercase text-slate-500 mb-2">Full Name</label>
+                        <input type="text" id="auth-name" class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-transparent focus:border-indigo-500 focus:outline-none text-slate-800 dark:text-white text-sm" placeholder="Alex Morgan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wide uppercase text-slate-500 mb-2">Email Address</label>
+                        <input type="email" id="auth-email" required class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-transparent focus:border-indigo-500 focus:outline-none text-slate-800 dark:text-white text-sm" placeholder="alex@sprint.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wide uppercase text-slate-500 mb-2">Password</label>
+                        <input type="password" id="auth-password" required class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-transparent focus:border-indigo-500 focus:outline-none text-slate-800 dark:text-white text-sm" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full gradient-bg py-3.5 rounded-xl font-medium text-white shadow-lg shadow-indigo-500/20 hover:opacity-90 transition mt-2">
+                        Continue Ecosystem Journey
+                    </button>
+                </form>
+
+                <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800/60 text-sm text-slate-500">
+                    <span id="auth-toggle-text">New to the future?</span>
+                    <button onclick="toggleAuthMode()" id="auth-toggle-btn" class="text-indigo-500 font-semibold ml-1 hover:underline">Create Account</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DASHBOARD METRICS & SUMMARY -->
+        <section id="page-dashboard" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-800 dark:text-white">Ecosystem Intelligence Dashboard</h2>
+                    <p class="text-sm text-slate-500">Continuous monitoring of your core sprint metrics.</p>
+                </div>
+                <button onclick="showPage('roadmap')" class="gradient-bg px-5 py-3 rounded-xl text-sm font-medium text-white flex items-center gap-2 shadow-lg shadow-indigo-500/20">
+                    <i class="fas fa-map"></i> Launch Roadmap System
+                </button>
+            </div>
+
+            <!-- Stats/Badges Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="glass p-6 rounded-2xl border flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold uppercase text-slate-400">Current Velocity</span>
+                        <span class="text-xl font-bold text-slate-800 dark:text-white">Lvl 4 Specialist</span>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl border flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold uppercase text-slate-400">Sprint Streak</span>
+                        <span class="text-xl font-bold text-slate-800 dark:text-white">12 Days Active</span>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl border flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold uppercase text-slate-400">Ecosystem Points</span>
+                        <span class="text-xl font-bold text-slate-800 dark:text-white">4,850 XP</span>
+                    </div>
+                </div>
+                <div class="glass p-6 rounded-2xl border flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold uppercase text-slate-400">Badges Unlocked</span>
+                        <span class="text-xl font-bold text-slate-800 dark:text-white">7 Verified</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid Splits -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Skill Tracker Column -->
+                <div class="glass p-6 rounded-2xl border lg:col-span-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-bold text-lg text-slate-800 dark:text-white">Skill Matrix Progress</h3>
+                        <span class="text-xs text-indigo-500 font-semibold cursor-pointer hover:underline">Manage Skills</span>
+                    </div>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-2">
+                                <span class="text-slate-700 dark:text-slate-300">Neural Network Engineering</span>
+                                <span class="text-indigo-400">82% Mastery</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-indigo-500 h-full rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-2">
+                                <span class="text-slate-700 dark:text-slate-300">Distributed Cloud Architectures</span>
+                                <span class="text-blue-400">64% Mastery</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full rounded-full" style="width: 64%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-medium mb-2">
+                                <span class="text-slate-700 dark:text-slate-300">Quantitative System Validation</span>
+                                <span class="text-teal-400">45% Mastery</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-teal-500 h-full rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges / Achievements Panel -->
+                <div class="glass p-6 rounded-2xl border">
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white mb-4">Latest Achievement Badges</h3>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="p-3 bg-slate-100 dark:bg-slate-900/60 rounded-xl border border-transparent hover:border-amber-500/30 transition group">
+                            <i class="fas fa-brain text-2xl text-amber-500 group-hover:scale-110 transition block mb-1"></i>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase">AI Pioneer</span>
+                        </div>
+                        <div class="p-3 bg-slate-100 dark:bg-slate-900/60 rounded-xl border border-transparent hover:border-blue-500/30 transition group">
+                            <i class="fas fa-code text-2xl text-blue-500 group-hover:scale-110 transition block mb-1"></i>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase">Code Warrior</span>
+                        </div>
+                        <div class="p-3 bg-slate-100 dark:bg-slate-900/60 rounded-xl border border-transparent hover:border-purple-500/30 transition group">
+                            <i class="fas fa-comments text-2xl text-purple-500 group-hover:scale-110 transition block mb-1"></i>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase">Orator Elite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. AI CAREER
